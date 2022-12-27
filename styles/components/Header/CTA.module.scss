@@ -1,0 +1,9 @@
+@import "@core/styles/_mixins.scss";
+@import "@core/styles/_brand-variables.scss";
+
+.ctas {
+	a {
+		margin: 0 1em;
+		color: $secondary;
+	}
+}

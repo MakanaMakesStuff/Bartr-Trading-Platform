@@ -1,0 +1,17 @@
+@import "@core/styles/_mixins.scss";
+@import "@core/styles/_brand-variables.scss";
+
+.header {
+	@include flex(row, space-between);
+	background-color: $primary;
+	height: 80px;
+	width: 100%;
+	padding: 0 1em;
+
+	.items {
+		a {
+			margin: 0 0.25em;
+			color: $secondary;
+		}
+	}
+}
