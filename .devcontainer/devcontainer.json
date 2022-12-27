@@ -1,0 +1,56 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.192.0/containers/ubuntu
+{
+	"name": "Bartr",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "bartr-app",
+	"workspaceFolder": "/workspace",
+
+	"postCreateCommand": "bash .devcontainer/scripts/created.sh",
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"prettier.endOfLine": "lf",
+		"files.insertFinalNewline": true,
+		"typescript.preferences.importModuleSpecifier": "non-relative",
+		"vetur.grammar.customBlocks": {
+			"route": "json"
+		},
+		"editor.formatOnPaste": true,
+		"editor.formatOnSave": true,
+		"volar.completion.preferredTagNameCase": "pascal",
+		"volar.formatting.printWidth": 80,
+		"editor.useTabStops": true,
+		"prettier.useTabs": true,
+		"editor.renderWhitespace": "all"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"dbaeumer.vscode-eslint",
+		"aaron-bond.better-comments",
+		"mhutchie.git-graph",
+		"eamodio.gitlens",
+		"wix.vscode-import-cost",
+		"christian-kohler.path-intellisense",
+		"oderwat.indent-rainbow",
+		"rvest.vs-code-prettier-eslint",
+		"esbenp.prettier-vscode",
+		"syler.sass-indented",
+		"mrmlnc.vscode-scss",
+		"visualstudioexptteam.vscodeintellicode",
+		"oouo-diogo-perdigao.docthis",
+		"alefragnani.bookmarks",
+		"mikestead.dotenv",
+		"formulahendry.auto-rename-tag",
+		"vue.volar"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// ! for some reason ports defined here aren't working on first build of codespace. Requires
+	// ! you to stop forwarding and then reforward for it to work
+	"forwardPorts": [3000, 3306, 4000]
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "construct"
+}

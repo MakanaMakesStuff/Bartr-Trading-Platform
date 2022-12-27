@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  bartr-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ~/.ssh:/home/vscode/.ssh
+      - ..:/workspace:cached
+    command: sleep infinity
