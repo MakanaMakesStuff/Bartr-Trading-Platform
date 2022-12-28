@@ -3,6 +3,7 @@
 
 .content {
 	@include flex(row);
+	gap: 10%;
 	padding: 2em;
 	width: 100%;
 	max-width: $max-width;
@@ -57,13 +58,47 @@
 		max-width: max-content;
 		position: relative;
 		@include flex(column);
-		padding: 1em;
+		padding: 3em;
 		margin: 0 5%;
 
-		.bubble {
-			width: 100% !important;
-			object-fit: cover;
+		.dot-1,
+		.dot-2,
+		.dot-3,
+		.dot-4 {
+			background-color: $primary;
+			position: absolute;
 			border-radius: 50%;
+			z-index: 100;
+		}
+
+		.dot-1 {
+			top: 0;
+		}
+
+		.dot-2 {
+			top: 30%;
+			right: 0;
+		}
+
+		.dot-3 {
+			bottom: 20%;
+			left: 0;
+		}
+
+		.dot-4 {
+			bottom: 0;
+			right: 10%;
+		}
+
+
+		>span {
+			border-radius: 50%;
+			position: relative;
+
+			.bubble {
+				width: 100% !important;
+				object-fit: cover;
+			}
 		}
 	}
 
