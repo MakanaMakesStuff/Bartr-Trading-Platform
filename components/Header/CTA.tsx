@@ -1,5 +1,6 @@
 import Link from "next/link"
 import style from "@core/styles/components/Header/CTA.module.scss"
+import { East } from "@mui/icons-material"
 
 export default function HeaderCTA() {
 	return (
@@ -9,7 +10,9 @@ export default function HeaderCTA() {
 			</Link>
 
 			<Link href="/account/signup">
-				<a>Become a member</a>
+				<a>
+					Become a member <East />
+				</a>
 			</Link>
 		</div>
 	)

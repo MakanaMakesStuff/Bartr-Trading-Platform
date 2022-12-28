@@ -2,8 +2,22 @@
 @import "@core/styles/_brand-variables.scss";
 
 .ctas {
+	@include flex(row);
+	gap: 0em;
+
 	a {
 		margin: 0 1em;
 		color: $secondary;
+		font-weight: 500;
+
+		&:last-of-type {
+			@include flex(row);
+			background-color: $secondary;
+			padding: 0.25em 1.5em;
+			line-height: 0;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+			color: $primaryLight !important;
+		}
 	}
 }

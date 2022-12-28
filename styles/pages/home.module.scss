@@ -1,0 +1,59 @@
+@import '@core/styles/_mixins.scss';
+@import '@core/styles/_brand-variables.scss';
+
+.page {
+	min-height: 100vh;
+
+	.hero {
+		@include flex(column, flex-start, center);
+		background-color: $primary;
+		background-image: unset !important;
+		overflow: hidden;
+		width: 100vw;
+		height: 70vh;
+		top: 0;
+		padding-bottom: 80px;
+
+		h1,
+		h3,
+		a {
+			text-align: center;
+			color: $secondary
+		}
+
+		.content {
+			@include flex(column);
+			height: 100%;
+
+			.title {
+				font-weight: 400;
+				font-size: 2.5rem;
+			}
+
+			.subTitle {
+				font-weight: lighter;
+			}
+
+			.buttons {
+				@include flex(row);
+
+				a {
+					padding: 1.5em;
+					width: 100%;
+					max-width: 140px;
+					background-color: $secondary;
+					color: $primary;
+					border-radius: 5px;
+					white-space: nowrap;
+					line-height: 0;
+
+					&:last-of-type {
+						color: $secondary;
+						background-color: unset;
+						border: 1px solid $primaryLight;
+					}
+				}
+			}
+		}
+	}
+}

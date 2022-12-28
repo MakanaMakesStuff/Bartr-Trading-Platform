@@ -1,0 +1,73 @@
+@import "@core/styles/_mixins.scss";
+@import "@core/styles/_brand-variables.scss";
+
+.content {
+	@include flex(row);
+	padding: 2em;
+	width: 100%;
+	max-width: $max-width;
+	margin: 5% auto;
+
+	.left {
+		@include flex(column);
+		width: 100%;
+		max-width: 400px;
+		margin: 0 5%;
+
+		h2,
+		p {
+			width: 100%;
+			text-align: left;
+		}
+
+		h2 {
+			color: $primaryText;
+			font-weight: 500;
+		}
+
+		p {
+			color: $secondaryText;
+		}
+
+		.buttons {
+			@include flex(row);
+			align-self: flex-start;
+
+			a {
+				background-color: $primary;
+				color: $secondary;
+				padding: 1em 2em;
+				border-radius: 5px;
+				font-size: 0.8rem;
+				font-weight: bold;
+
+				&:last-of-type {
+					@include flex(row);
+					gap: 0.5em;
+					background-color: unset;
+					color: $primary;
+				}
+			}
+		}
+	}
+
+	.right {
+		height: 100%;
+		width: 100%;
+		max-width: max-content;
+		position: relative;
+		@include flex(column);
+		padding: 1em;
+		margin: 0 5%;
+
+		.bubble {
+			width: 100% !important;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+
+	&:nth-child(odd) {
+		flex-direction: row-reverse;
+	}
+}
