@@ -1,29 +1,30 @@
-import { gql } from "@apollo/client"
-import SEO from "../components/SEO"
-import { BlogInfoFragment } from "../fragments/GeneralSettings"
-import * as MENUS from "@core/constants/menus"
-import { MenuFragment } from "@core/constants/fragments"
-import Header from "@core/components/Header/Main"
-import Link from "next/link"
-import style from "@core/styles/pages/home.module.scss"
-import IntroductionContent from "@core/components/Content/Introduction"
+import { gql } from "@apollo/client";
+import SEO from "../components/SEO";
+import { BlogInfoFragment } from "../fragments/GeneralSettings";
+import * as MENUS from "@core/constants/menus";
+import { MenuFragment } from "@core/constants/fragments";
+import Header from "@core/components/Header/Main";
+import Link from "next/link";
+import style from "@core/styles/pages/home.module.scss";
+import IntroductionContent from "@core/components/Content/Introduction";
+import WaitlistContent from "@core/components/Content/Waitlist";
 
 export default function Component(props: any) {
 	if (props.loading) {
-		return <>Loading...</>
+		return <>Loading...</>;
 	}
 
 	const { title: siteTitle, description: siteDescription } =
-		props?.data?.generalSettings
+		props?.data?.generalSettings;
 
-	const menuItems = props?.data?.headerMenu?.nodes
+	const menuItems = props?.data?.headerMenu?.nodes;
 
-	const page = props?.data?.page
-	const heroTitle = page?.homePageHero?.title
-	const heroSubTitle = page?.homePageHero?.subTitle
-	const leftButton = page?.homePageHero?.leftButton
-	const rightButton = page?.homePageHero?.rightButton
-	const background = page?.homePageHero?.featuredImage?.mediaItemUrl
+	const page = props?.data?.page;
+	const heroTitle = page?.homePageHero?.title;
+	const heroSubTitle = page?.homePageHero?.subTitle;
+	const leftButton = page?.homePageHero?.leftButton;
+	const rightButton = page?.homePageHero?.rightButton;
+	const background = page?.homePageHero?.featuredImage?.mediaItemUrl;
 
 	const contentA = {
 		title: page?.contentAHomePage?.contentA?.title,
@@ -34,7 +35,7 @@ export default function Component(props: any) {
 		background: page?.contentAHomePage?.contentA?.featuredImage?.mediaItemUrl,
 		learnMore: page?.contentAHomePage?.contentA?.learnMore,
 		description: page?.contentAHomePage?.contentA?.description,
-	}
+	};
 
 	const contentB = {
 		title: page?.contentBHomePage?.contentB?.title,
@@ -45,9 +46,11 @@ export default function Component(props: any) {
 		background: page?.contentBHomePage?.contentB?.featuredImage?.mediaItemUrl,
 		learnMore: page?.contentBHomePage?.contentB?.learnMore,
 		description: page?.contentBHomePage?.contentB?.description,
-	}
+	};
 
-	console.log(contentA, contentB)
+	const title = page?.waitlist?.subscribeTitle;
+	const subTitle = page?.waitlist?.subscribeSubTitle;
+	const button = page?.waitlist?.subscribeButton;
 
 	return (
 		<>
@@ -80,9 +83,14 @@ export default function Component(props: any) {
 				<IntroductionContent content={contentA} />
 
 				<IntroductionContent content={contentB} />
+
+				<WaitlistContent
+					showLogo={true}
+					content={{ title, subTitle, button }}
+				/>
 			</div>
 		</>
-	)
+	);
 }
 
 Component.query = gql`
@@ -125,7 +133,6 @@ Component.query = gql`
 					description
 				}
 			}
-
 			contentBHomePage {
 				contentB {
 					ctaButton {
@@ -140,6 +147,11 @@ Component.query = gql`
 					description
 				}
 			}
+			waitlist: subscribe {
+				subscribeButton
+				subscribeTitle
+				subscribeSubTitle
+			}
 		}
 		generalSettings {
 			...BlogInfoFragment
@@ -150,12 +162,12 @@ Component.query = gql`
 			}
 		}
 	}
-`
+`;
 
 Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
 		headerLocation: MENUS.PRIMARY_LOCATION,
 		asPreview: ctx?.asPreview,
-	}
-}
+	};
+};
