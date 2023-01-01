@@ -1,13 +1,13 @@
 import { gql } from "@apollo/client";
-import SEO from "../components/SEO";
-import { BlogInfoFragment } from "../fragments/GeneralSettings";
-import * as MENUS from "@core/constants/menus";
-import { MenuFragment } from "@core/constants/fragments";
-import Header from "@core/components/Header/Main";
+import SEO from "../src/components/SEO";
+import { BlogInfoFragment } from "../src/fragments/GeneralSettings";
+import * as MENUS from "@core/src/constants/menus";
+import { MenuFragment } from "@core/src/constants/fragments";
+import Header from "@core/src/components/Header/Main";
 import Link from "next/link";
-import style from "@core/styles/pages/home.module.scss";
-import IntroductionContent from "@core/components/Content/Introduction";
-import WaitlistContent from "@core/components/Content/Waitlist";
+import style from "@core/src/styles/pages/home.module.scss";
+import IntroductionContent from "@core/src/components/Content/Introduction";
+import WaitlistContent from "@core/src/components/Content/Waitlist";
 
 export default function Component(props: any) {
 	if (props.loading) {

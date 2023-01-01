@@ -1,0 +1,11 @@
+@import "@core/src/styles/_mixins.scss";
+@import "@core/src/styles/_brand-variables.scss";
+
+.logo {
+	@include flex(row);
+	gap: 0;
+
+	span {
+		color: $secondary;
+	}
+}

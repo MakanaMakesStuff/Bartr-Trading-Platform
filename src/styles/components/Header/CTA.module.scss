@@ -1,5 +1,5 @@
-@import "@core/styles/_mixins.scss";
-@import "@core/styles/_brand-variables.scss";
+@import "@core/src/styles/_mixins.scss";
+@import "@core/src/styles/_brand-variables.scss";
 
 .ctas {
 	@include flex(row);

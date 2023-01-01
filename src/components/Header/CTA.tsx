@@ -1,6 +1,6 @@
-import Link from "next/link"
-import style from "@core/styles/components/Header/CTA.module.scss"
-import { East } from "@mui/icons-material"
+import Link from "next/link";
+import style from "@core/src/styles/components/Header/CTA.module.scss";
+import { East } from "@mui/icons-material";
 
 export default function HeaderCTA() {
 	return (
@@ -15,5 +15,5 @@ export default function HeaderCTA() {
 				</a>
 			</Link>
 		</div>
-	)
+	);
 }

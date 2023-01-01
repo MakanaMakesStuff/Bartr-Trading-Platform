@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
-import style from "@core/styles/components/Content/Waitlist.module.scss";
+import style from "@core/src/styles/components/Content/Waitlist.module.scss";
 import trade from "@core/public/images/trade.png";
+import { useState } from "react";
 
 export interface WaitlistContentI {
 	title?: string;
@@ -16,6 +17,7 @@ export default function WaitlistContent({
 	content?: WaitlistContentI;
 	showLogo?: boolean;
 }) {
+	const [email, setEmail] = useState("");
 	return (
 		<section className={style.waitlist}>
 			{showLogo ? (
@@ -31,8 +33,22 @@ export default function WaitlistContent({
 			{content?.subTitle ? <p>{content.subTitle}</p> : null}
 			{content?.button ? (
 				<form className={style.info}>
-					<input type="text" placeholder="Please enter your email address.." />
-					<Button>{content.button}</Button>
+					<input
+						type="email"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						placeholder="Please enter your email address.."
+					/>
+					<Button
+						style={{
+							transition: "opacity 0.25s ease",
+							opacity: email.length <= 0 ? 0.5 : 1,
+						}}
+						disabled={email.length <= 0}
+						type="submit"
+					>
+						{content.button}
+					</Button>
 				</form>
 			) : null}
 		</section>

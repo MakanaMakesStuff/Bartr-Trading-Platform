@@ -1,35 +1,35 @@
-import Link from "next/link"
-import style from "@core/styles/components/Content/Introduction.module.scss"
-import Image from "next/image"
-import { ArrowForwardIos } from "@mui/icons-material"
+import Link from "next/link";
+import style from "@core/src/styles/components/Content/Introduction.module.scss";
+import Image from "next/image";
+import { ArrowForwardIos } from "@mui/icons-material";
 
 export interface IntroductionContentI {
-	title?: string
-	description?: string
+	title?: string;
+	description?: string;
 	cta?: {
-		label?: string
-		url?: string
-	}
-	learnMore?: string
-	background?: string
+		label?: string;
+		url?: string;
+	};
+	learnMore?: string;
+	background?: string;
 }
 
 export default function IntroductionContent({
 	content,
 	max = 4,
 }: {
-	content: IntroductionContentI
-	max?: number
+	content: IntroductionContentI;
+	max?: number;
 }) {
 	function getBubbles() {
-		const bubbles = []
+		const bubbles = [];
 
 		for (let i = 0; i < max; i++) {
-			const size = Math.random() + 0.5
-			bubbles.push({ key: i, size: size * size })
+			const size = Math.random() + 0.5;
+			bubbles.push({ key: i, size: size * size });
 		}
 
-		return bubbles
+		return bubbles;
 	}
 	return (
 		<section className={style.content}>
@@ -73,5 +73,5 @@ export default function IntroductionContent({
 				/>
 			</div>
 		</section>
-	)
+	);
 }
