@@ -50,7 +50,7 @@ export default function LoginForm() {
 					loggedIn: data?.loginWithCookies?.status ? true : false,
 				}));
 
-				router.push("/account");
+				router.push("/account/profile");
 			})
 			.catch((error) => {
 				console.error(error);
