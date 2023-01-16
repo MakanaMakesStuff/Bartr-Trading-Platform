@@ -113,8 +113,8 @@ export default function SignUpForm() {
 
 			<input
 				type="text"
-				placeholder="lasst name"
-				name="lasstName"
+				placeholder="last name"
+				name="lastName"
 				onChange={handleChange}
 				required
 			/>
