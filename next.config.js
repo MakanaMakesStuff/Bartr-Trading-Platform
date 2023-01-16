@@ -15,4 +15,8 @@ module.exports = withFaust({
     locales: ['en'],
     defaultLocale: 'en',
   },
+  env: {
+    NEXT_PUBLIC_WORDPRESS_URL: "https://expecttoptensdotcom.wpcomstaging.com",
+    FAUSTWP_SECRET_KEY: "92124dd5-c7d5-4f66-bb92-7f7b403e26b6"
+  }
 });
