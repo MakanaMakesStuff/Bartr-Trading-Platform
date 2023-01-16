@@ -3,6 +3,7 @@
 
 .header {
 	@include flex(row, space-between);
+	flex-wrap: wrap;
 	background-color: $primary;
 	height: 80px;
 	width: 100%;

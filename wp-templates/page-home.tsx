@@ -1,23 +1,21 @@
 import { gql } from "@apollo/client";
 import SEO from "../src/components/SEO";
-import { BlogInfoFragment } from "../src/fragments/GeneralSettings";
-import * as MENUS from "@core/src/constants/menus";
-import { MenuFragment } from "@core/src/constants/fragments";
 import Header from "@core/src/components/Header/Main";
 import Link from "next/link";
 import style from "@core/src/styles/pages/home.module.scss";
 import IntroductionContent from "@core/src/components/Content/Introduction";
 import WaitlistContent from "@core/src/components/Content/Waitlist";
+import { AppContextProps, useAppContext } from "@core/src/utilities/AppContext";
 
 export default function Component(props: any) {
+	const { state: appState } = useAppContext() as AppContextProps;
+
 	if (props.loading) {
 		return <>Loading...</>;
 	}
 
 	const { title: siteTitle, description: siteDescription } =
-		props?.data?.generalSettings;
-
-	const menuItems = props?.data?.headerMenu?.nodes;
+		appState.settings || {};
 
 	const page = props?.data?.page;
 	const heroTitle = page?.homePageHero?.title;
@@ -63,7 +61,7 @@ export default function Component(props: any) {
 						backgroundSize: "cover",
 					}}
 				>
-					<Header menuItems={menuItems} />
+					<Header />
 
 					<div className={style.content}>
 						<h1 className={style.title}>{heroTitle}</h1>
@@ -94,13 +92,7 @@ export default function Component(props: any) {
 }
 
 Component.query = gql`
-	${BlogInfoFragment}
-	${MenuFragment}
-	query GetPageData(
-		$databaseId: ID!
-		$asPreview: Boolean = false
-		$headerLocation: MenuLocationEnum
-	) {
+	query GetPageData($databaseId: ID!, $asPreview: Boolean = false) {
 		page(id: $databaseId, idType: DATABASE_ID, asPreview: $asPreview) {
 			title
 			content
@@ -153,21 +145,12 @@ Component.query = gql`
 				subscribeSubTitle
 			}
 		}
-		generalSettings {
-			...BlogInfoFragment
-		}
-		headerMenu: menuItems(where: { location: $headerLocation }) {
-			nodes {
-				...MenuFragment
-			}
-		}
 	}
 `;
 
 Component.variables = ({ databaseId }, ctx) => {
 	return {
 		databaseId,
-		headerLocation: MENUS.PRIMARY_LOCATION,
 		asPreview: ctx?.asPreview,
 	};
 };

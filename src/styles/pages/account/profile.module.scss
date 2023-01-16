@@ -1,0 +1,24 @@
+@import '@styles/_mixins.scss';
+@import '@styles/_brand-variables.scss';
+
+.sidebar {
+	@include flex();
+
+	.avatar {
+		border-radius: 5px;
+		width: 100%;
+		height: auto;
+	}
+
+	.info {
+		@include flex();
+		background-color: $secondary;
+		padding: 1em;
+		border-radius: 5px;
+
+		span {
+			width: 100%;
+			text-align: left;
+		}
+	}
+}

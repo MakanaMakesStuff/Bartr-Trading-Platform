@@ -1,0 +1,20 @@
+@import '@styles/_mixins.scss';
+@import '@styles/_brand-variables.scss';
+
+.layout {
+	@include grid();
+	grid-template-columns: 1fr;
+	grid-template-rows: max-content 1fr max-content;
+	background-color: $primary;
+	min-height: 100vh;
+	width: 100%;
+
+	h1 {
+		color: $secondary;
+		text-align: center;
+	}
+}
+
+.header {
+	width: 100%;
+}

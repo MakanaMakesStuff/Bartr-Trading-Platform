@@ -1,0 +1,45 @@
+@import '@styles/_mixins.scss';
+@import '@styles/_brand-variables.scss';
+
+.form {
+	@include flex();
+	background-color: $secondary;
+	padding: 1em;
+	border-radius: 5px;
+	width: 100%;
+	height: max-content;
+	max-width: 300px;
+	margin: auto;
+	box-shadow: 2px 2px 5px 3px rgba($secondaryText, 0.1);
+
+	h3 {
+		color: $primaryLight;
+	}
+
+	input {
+		min-height: 25px;
+		width: 100%;
+		border: none;
+		padding: 0.5em 1em;
+		background-color: rgba($secondaryText, 0.1);
+	}
+
+	button, a {
+		background-color: $primaryLight;
+		text-transform: capitalize;
+		color: $secondary;
+		align-self: flex-end;
+		margin: auto;
+		border-radius: 5px;
+		padding: 0.5em 1em;
+
+		&:hover {
+			background-color: $primaryLight;
+			opacity: 0.8;
+		}
+
+		&:active {
+			transform: scale(0.9);
+		}
+	}
+}
