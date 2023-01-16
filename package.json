@@ -1,7 +1,7 @@
 {
   "name": "@faustwp/getting-started-example",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "scripts": {
     "dev": "faust dev",
     "build": "faust build",
@@ -24,6 +24,9 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "sass": "^1.54.9"
+  },
+  "engines": {
+    "node": "19.4.0"
   },
   "devDependencies": {
     "@types/node": "18.11.17",
