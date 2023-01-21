@@ -1,36 +1,52 @@
-import Link from "next/link";
-import style from "@core/src/styles/components/Content/Introduction.module.scss";
-import Image from "next/image";
-import { ArrowForwardIos } from "@mui/icons-material";
+import Link from "next/link"
+import style from "@core/src/styles/components/Content/Introduction.module.scss"
+import Image from "next/image"
+import { ArrowForwardIos } from "@mui/icons-material"
+import { useEffect, useRef, useState } from "react"
 
 export interface IntroductionContentI {
-	title?: string;
-	description?: string;
+	title?: string
+	description?: string
 	cta?: {
-		label?: string;
-		url?: string;
-	};
-	learnMore?: string;
-	background?: string;
+		label?: string
+		url?: string
+	}
+	learnMore?: string
+	background?: string
 }
 
 export default function IntroductionContent({
 	content,
 	max = 4,
 }: {
-	content: IntroductionContentI;
-	max?: number;
+	content: IntroductionContentI
+	max?: number
 }) {
 	function getBubbles() {
-		const bubbles = [];
+		const bubbles = []
 
 		for (let i = 0; i < max; i++) {
-			const size = Math.random() + 0.5;
-			bubbles.push({ key: i, size: size * size });
+			const size = Math.random() + 0.5
+			bubbles.push({ key: i, size: size * size * 20 })
 		}
 
-		return bubbles;
+		return bubbles
 	}
+
+	const mounted = useRef(false)
+
+	const [bubbles, setBubbles] = useState([])
+
+	useEffect(() => {
+		if (!mounted.current) {
+			setBubbles(getBubbles())
+		}
+
+		return () => {
+			mounted.current = true
+		}
+	})
+
 	return (
 		<section className={style.content}>
 			<div className={style.left}>
@@ -50,16 +66,18 @@ export default function IntroductionContent({
 			</div>
 
 			<div className={style.right}>
-				{getBubbles()?.map((bubble) => (
-					<div
-						key={bubble?.key}
-						className={style[`dot-${bubble?.key + 1}`]}
-						style={{
-							width: `${Math.round(20 * bubble?.size)}px`,
-							height: `${Math.round(20 * bubble?.size)}px`,
-						}}
-					/>
-				))}
+				{bubbles.length > 0
+					? bubbles?.map((bubble, i) => (
+							<div
+								key={i}
+								className={style[`dot-${bubble?.key + 1}`]}
+								style={{
+									width: `${bubble?.size}px`,
+									height: `${bubble?.size}px`,
+								}}
+							/>
+					  ))
+					: null}
 
 				<Image
 					src={content?.background}
@@ -73,5 +91,5 @@ export default function IntroductionContent({
 				/>
 			</div>
 		</section>
-	);
+	)
 }
