@@ -6,7 +6,8 @@
     "dev": "faust dev",
     "build": "faust build",
     "generate": "faust generatePossibleTypes",
-    "start": "faust start"
+    "start": "faust start",
+    "heroku-postbuild": "npm run build --prod" 
   },
   "dependencies": {
     "@apollo/client": "^3.6.6",
